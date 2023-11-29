@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="annotations-api">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../../../../../JavaWeb (idea)/apache-tomcat-8.5.82/lib/annotations-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../JavaWeb (idea)/apache-tomcat-8.5.82/lib/el-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../JavaWeb (idea)/apache-tomcat-8.5.82/lib/jaspic-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../JavaWeb (idea)/apache-tomcat-8.5.82/lib/jsp-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../JavaWeb (idea)/apache-tomcat-8.5.82/lib/servlet-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../JavaWeb (idea)/apache-tomcat-8.5.82/lib/tomcat-api.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../../../../JavaWeb (idea)/apache-tomcat-8.5.82/lib/websocket-api.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

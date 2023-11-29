@@ -1,0 +1,17 @@
+package com.qf.dao;
+
+import com.qf.domain.User;
+
+/**
+ * projectName:myxiaomi
+ * author:HuShanTao
+ * time:2023/11/27 8:09
+ * description:
+ */
+public interface UserDao {
+    User selectByUserName(String username);
+
+    void insert(User user);
+
+    int updateFlag(String email, String code);
+}
