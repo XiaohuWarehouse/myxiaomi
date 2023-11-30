@@ -133,4 +133,9 @@ public class OrderServlet extends BaseServlet {
             return "/message.jsp";
         }
     }
+
+    //后台查看订单列表
+    public String getAllOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        return "redirect:/admin/showAllOrder.jsp";
+    }
 }

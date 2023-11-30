@@ -3,6 +3,7 @@ package com.qf.service;
 import com.qf.domain.Goods;
 import com.qf.domain.PageBean;
 
+import javax.xml.crypto.Data;
 import java.util.List;
 
 /**
@@ -17,4 +18,11 @@ public interface GoodsService {
     Goods findById(Integer gid);
 
     void add(Goods goods);
+
+    List<Goods> goodsselect(String name, String pubdate);
+    List<Goods> goodsselect(String name);
+    List<Goods> goodsselects(String pubdate);
+
+    List<Goods> getAllGoods();
+
 }

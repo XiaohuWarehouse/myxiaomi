@@ -135,19 +135,19 @@
 					$(".dv_content").attr("src","userList.jsp");
 				})
 				$("#showGoodsType").click(function(){
-					$(".dv_content").attr("src","${pageContext.request.contextPath}/getGoodsType?flag=show");
+					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsTypeshow");
 				})
 				$("#addGoodsType").click(function(){
-					$(".dv_content").attr("src","${pageContext.request.contextPath}/getGoodsType?flag=add");
+					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsTypeadd");
 				})
 				$("#showGoods").click(function(){
-					$(".dv_content").attr("src","${pageContext.request.contextPath}/getGoodsList");
+					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsList&id=${goods.id}");
 				})
 				$("#addGoods").click(function(){
 					$(".dv_content").attr("src","addGoods.jsp");
 				})
 				$("#showOrder").click(function(){
-					$(".dv_content").attr("src","${pageContext.request.contextPath}/getAllOrder");
+					$(".dv_content").attr("src","${pageContext.request.contextPath}/orderservlet?method=getAllOrder");
 				})
 			</script>
 			<iframe class="dv_content" frameborder="0" scrolling="no">

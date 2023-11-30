@@ -51,7 +51,7 @@
 								<td>${goods.name}</td>
 								<td>${goods.price}</td>
 								<td>${goods.pubdate}</td>
-								<td>${goods.typeName}</td>
+								<%--<td>${goods.typeName}</td>--%>
 								<td>删除 &nbsp;修改 &nbsp;
 									<a tabindex="0" id="example${goods.id}" class="btn btn-primary btn-xs"
 									role="button" data-toggle="popover"

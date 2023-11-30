@@ -2,6 +2,7 @@ package com.qf.dao;
 
 import com.qf.domain.Goods;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -18,4 +19,12 @@ public interface GoodsDao {
     Goods selectById(Integer gid);
 
     void insert(Goods goods);
+
+    List<Goods> goodsselect(String name, String pubdate);
+
+    List<Goods> getAllGoods();
+
+    List<Goods> goodsselect(String name);
+
+    List<Goods> goodsselects(String pubdate);
 }

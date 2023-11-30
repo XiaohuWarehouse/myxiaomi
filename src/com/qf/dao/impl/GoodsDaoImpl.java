@@ -9,6 +9,7 @@ import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -19,6 +20,7 @@ import java.util.List;
  */
 public class GoodsDaoImpl implements GoodsDao {
     private QueryRunner queryRunner = new QueryRunner(DataSourceUtil.getDataSource());
+
     @Override
     public long getCount(String where, List<Object> params) {
         String sql = " SELECT COUNT(*) FROM `tb_goods`  " + where;
@@ -54,9 +56,49 @@ public class GoodsDaoImpl implements GoodsDao {
     @Override
     public void insert(Goods goods) {
         String sql = " INSERT INTO `tb_goods` (`name`,`pubdate`,`picture`,`price`,`star`,`intro`,`typeid`) VALUES (?,?,?,?,?,?,?) ";
-        Object[] params = {goods.getName(),goods.getPubdate(),goods.getPicture(),goods.getPrice(),goods.getStar(),goods.getIntro(),goods.getTypeid()};
+        Object[] params = {goods.getName(), goods.getPubdate(), goods.getPicture(), goods.getPrice(), goods.getStar(), goods.getIntro(), goods.getTypeid()};
         try {
-            queryRunner.update(sql,params);
+            queryRunner.update(sql, params);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Goods> goodsselect(String name, String pubdate) {
+        String sql = " SELECT * FROM tb_goods WHERE name LIKE '%null%' AND pubdate = 'null' ";
+        try {
+            return queryRunner.query(sql, new BeanListHandler<>(Goods.class), name, pubdate);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Goods> getAllGoods() {
+        String sql = " SELECT * FROM tb_goods ";
+        try {
+            return queryRunner.query(sql, new BeanListHandler<>(Goods.class));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Goods> goodsselect(String name) {
+        String sql = " SELECT * FROM tb_goods WHERE name LIKE '%null%' ";
+        try {
+            return queryRunner.query(sql, new BeanListHandler<>(Goods.class), name);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<Goods> goodsselects(String pubdate) {
+        String sql = " SELECT * FROM tb_goods WHERE name pubdate = 'null' ";
+        try {
+            return queryRunner.query(sql, new BeanListHandler<>(Goods.class), pubdate);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

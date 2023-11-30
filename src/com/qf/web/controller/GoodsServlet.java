@@ -176,17 +176,74 @@ public class GoodsServlet extends BaseServlet {
         }
         return null;
     }
+
+    //查看后台商品
+    public String getGoodsList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 处理GET请求
+        String name = request.getParameter("name");
+        String pubdate = request.getParameter("pubdate");
+
+        // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
+        try {
+            GoodsService goodsService = new GoodsServiceImpl();
+
+            // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
+            List<Goods> goodsList;
+
+            if (name != null && pubdate != null) {
+                goodsList = goodsService.goodsselect(name,pubdate);
+            } else if (name != null) {
+                goodsList = goodsService.goodsselect(name);
+            } else if (pubdate != null) {
+                goodsList = goodsService.goodsselects(pubdate);
+            } else {
+                // 处理没有提供任何参数的情况，查询所有商品列表
+                goodsList = goodsService.getAllGoods();
+            }
+
+            // 将查询结果存储在request属性中
+            request.setAttribute("goodsList", goodsList);
+            return "/admin/showGoods.jsp";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    //后台添加商品种类
+    public String getGoodsTypeadd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        return "redirect:/admin/addGoodsType.jsp";
+    }
+
+    //后台商品分类
+    public String getGoodsTypeshow(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        // 处理GET请求
+        String name = request.getParameter("name");
+        String pubdate = request.getParameter("pubdate");
+
+        // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
+        try {
+            GoodsService goodsService = new GoodsServiceImpl();
+
+            // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
+            List<Goods> goodsList;
+
+            if (name != null && pubdate != null) {
+                goodsList = goodsService.goodsselect(name,pubdate);
+            } else if (name != null) {
+                goodsList = goodsService.goodsselect(name);
+            } else if (pubdate != null) {
+                goodsList = goodsService.goodsselects(pubdate);
+            } else {
+                // 处理没有提供任何参数的情况，查询所有商品列表
+                goodsList = goodsService.getAllGoods();
+            }
+
+            // 将查询结果存储在request属性中
+            request.setAttribute("goodsList", goodsList);
+            return "redirect:/admin/showGoodsType.jsp";
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

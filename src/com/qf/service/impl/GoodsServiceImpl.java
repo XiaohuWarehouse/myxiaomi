@@ -2,12 +2,16 @@ package com.qf.service.impl;
 
 import com.qf.dao.GoodsDao;
 import com.qf.dao.impl.GoodsDaoImpl;
+import com.qf.domain.Cart;
 import com.qf.domain.Goods;
 import com.qf.domain.GoodsType;
 import com.qf.domain.PageBean;
 import com.qf.service.GoodsService;
 import com.qf.service.GoodsTypeService;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
+import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -41,6 +45,26 @@ public class GoodsServiceImpl implements GoodsService {
     @Override
     public void add(Goods goods) {
         goodsDao.insert(goods);
+    }
+
+    @Override
+    public List<Goods> goodsselect(String name, String pubdate) {
+        return goodsDao.goodsselect(name,pubdate);
+    }
+
+    @Override
+    public List<Goods> goodsselect(String name) {
+        return goodsDao.goodsselect(name);
+    }
+
+    @Override
+    public List<Goods> goodsselects(String pubdate) {
+        return goodsDao.goodsselects(pubdate);
+    }
+
+    @Override
+    public List<Goods> getAllGoods() {
+        return goodsDao.getAllGoods();
     }
 }
 
