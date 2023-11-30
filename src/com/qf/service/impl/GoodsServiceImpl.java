@@ -37,6 +37,11 @@ public class GoodsServiceImpl implements GoodsService {
         }
         return goods;
     }
+
+    @Override
+    public void add(Goods goods) {
+        goodsDao.insert(goods);
+    }
 }
 
 

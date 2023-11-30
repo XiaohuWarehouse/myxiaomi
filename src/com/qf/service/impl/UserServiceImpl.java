@@ -14,10 +14,11 @@ import com.qf.utils.MD5Utils;
  * description:
  */
 public class UserServiceImpl implements UserService {
-    private UserDao userDao=new UserDaoImpl();
+    private UserDao userDao = new UserDaoImpl();
+
     @Override
     public boolean checkUserName(String username) {
-        User user=userDao.selectByUserName(username);
+        User user = userDao.selectByUserName(username);
         if (user != null) {
             return true;//用户已存在 1 不能注册
         }
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void active(String email, String code) {
-        int result=userDao.updateFlag(email,code);
+        int result = userDao.updateFlag(email, code);
     }
 
     @Override
@@ -49,12 +50,37 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("用户名不存在");
         }
         //比对密码
-        if(!user.getPassword().equalsIgnoreCase(password)){
+        if (!user.getPassword().equalsIgnoreCase(password)) {
             throw new RuntimeException("密码错误");
         }
         //是否激活
-        if(user.getFlag()!=1){
+        if (user.getFlag() != 1) {
             throw new RuntimeException("账户未激活或激活已过期");
+        }
+        return user;
+    }
+
+    @Override
+    public User adminLogin(String username, String password) {
+        //加密
+        password = MD5Utils.md5(password);
+        //查找用户
+        User user = userDao.selectByUserName(username);
+        //判断是否存在
+        if (user == null) {
+            throw new RuntimeException("用户名不存在");
+        }
+        //比对密码
+        if (!user.getPassword().equalsIgnoreCase(password)) {
+            throw new RuntimeException("密码错误");
+        }
+        //是否激活
+        if (user.getFlag() != 1) {
+            throw new RuntimeException("账户未激活或激活已过期");
+        }
+        //是否为管理员
+        if (user.getRole() != 0) {
+            throw new RuntimeException("账户非管理员");
         }
         return user;
     }

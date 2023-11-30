@@ -21,7 +21,7 @@ import java.util.List;
  * projectName:myxiaomi
  * author:HuShanTao
  * time:2023/11/25 17:52
- * description:
+ * description:用于管理 Web 应用程序中的用户注册、登录和地址信息。
  */
 @WebServlet("/userservlet")
 public class UserServlet extends BaseServlet {
@@ -59,7 +59,7 @@ public class UserServlet extends BaseServlet {
             return "/register.jsp";
         }
         //友情提示 如果不写邮箱激活 flag=1
-        User user = new User(0, username, password, email, gender, 0, 1, RandomUtils.createActiveCode());
+        User user = new User(0, username, password, email, gender, 0, 0, RandomUtils.createActiveCode());
         try {
             userService.register(user);
             //3转发重定向
@@ -78,8 +78,6 @@ public class UserServlet extends BaseServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         String vcode = request.getParameter("vcode");
-
-        //后加
         String auto = request.getParameter("auto");
 
         //校验
@@ -321,5 +319,45 @@ public class UserServlet extends BaseServlet {
             request.setAttribute("msg", "更新地址失败：" + e.getMessage());
             return "/address_info.jsp";
         }
+    }
+
+    //后台管理登录adminLogin
+    public String adminLogin(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //获取前端数据
+        String username = request.getParameter("username");
+        String password = request.getParameter("password");
+        //非空校验
+        if (StringUtils.isEmpty(username)) {
+            request.setAttribute("msg", "用户名不能为空");
+            return "/message.jsp";
+        }
+        if (StringUtils.isEmpty(password)) {
+            request.setAttribute("msg", "密码不能为空");
+            return "/message.jsp";
+        }
+        //调用业务逻辑
+        try {
+            UserService userService = new UserServiceImpl();
+            User user = userService.adminLogin(username, password);
+            //把用户存入session中
+            request.getSession().setAttribute("user", user);
+            //转发重定向
+            return "redirect:/admin/admin.jsp";
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "登录失败" + e.getMessage());
+            return "/message.jsp";
+        }
+    }
+
+    //用户退出功能
+    public String adminlogOut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //把session中的信息移除
+        HttpSession session = request.getSession();
+        session.removeAttribute("user");
+        //session失效
+        session.invalidate();
+        //4转发重定向
+        return "redirect:/admin/login.jsp";
     }
 }

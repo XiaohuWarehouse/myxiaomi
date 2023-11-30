@@ -62,7 +62,7 @@
 						<tr align="center">
 							<th>${i.count}</th>
 							<th>
-								<img src="${pageContext.request.contextPath}/goodsImgs/${item.goods.picture}" width="50px" height="50px">
+								<img src="${pageContext.request.contextPath}/goodsImgs?pic=${item.goods.picture}" width="50px" height="50px">
 							</th>
 							<th>${item.goods.name}</th>
 							<th>${item.goods.star}</th>

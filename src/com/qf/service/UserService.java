@@ -16,4 +16,6 @@ public interface UserService {
     void active(String email, String code);
 
     User login(String username, String password);
+
+    User adminLogin(String username, String password);
 }

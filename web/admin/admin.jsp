@@ -36,7 +36,7 @@
 </style>
 </head>
 <body>
-	<c:if test="${admin==null }">
+	<c:if test="${user==null }">
 		<c:redirect url="login.jsp"></c:redirect>
 	</c:if>
 	<!--导航 -->
@@ -52,12 +52,15 @@
 		</div>
 		<ul id="top_right" class="collapse navbar-collapse nav navbar-nav navbar-right"	style="margin-right: 20px;">
 			<li>
+				<a href="userAddress?flag=show" id="a_top">${user.username}</a>
+			</li>
+			<li>
 				<a href="#">
 					<span class="badge"	style="background-color: red;">23</span>
 				</a>
 			</li>
 			<li>
-				<a href="#"> 
+				<a href="${pageContext.request.contextPath }/userservlet?method=adminlogOut" onclick="return confirm('确定要退出吗?')">
 					<span class="glyphicon glyphicon-off"></span>注销
 				</a>
 			</li>

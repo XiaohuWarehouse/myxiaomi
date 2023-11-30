@@ -34,7 +34,7 @@
 	    	<c:forEach items="${pageBean.data}" var="g" varStatus="i">
 		    	<div class="col-sm-3">
 				    <div class="thumbnail">
-				      <img src="${pageContext.request.contextPath}/goodsImgs/${g.picture}" width="180" height="180"  alt="小米6" />
+				      <img src="${pageContext.request.contextPath}/goodsImgs?pic=${g.picture}" width="180" height="180"  alt="小米6" />
 				      <div class="caption">
 				        <h4>商品名称<a href="${pageContext.request.contextPath}/goodsservlet?method=getGoodsById&id=${g.id}">${g.name}</a></h4>
 				        <p>热销指数

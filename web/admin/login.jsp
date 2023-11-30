@@ -48,10 +48,10 @@
 		<div style="text-align: center;">
 			<img src="../image/mistore_logo.png" alt="logo" width="30%" height="30%" />
 		</div>
-		<form action="${pageContext.request.contextPath }/adminLogin" method="post">
+		<form action="${pageContext.request.contextPath }/userservlet?method=adminLogin" method="post">
 			<div class="form-group">
 				<label>用户名:</label>
-				<input type="text" name="username" id="" class="form-control" placeholder="请输入用户名"/>
+				<input type="text" name="username" id="username" class="form-control" placeholder="请输入用户名"/>
 			</div>
 			<div class="form-group">
 				<label>密&nbsp;&nbsp;&nbsp;码:</label>

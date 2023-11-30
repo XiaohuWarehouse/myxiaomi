@@ -16,4 +16,6 @@ public interface GoodsDao {
     List<Goods> selectByPage(int page_num, int page_size, String where, List<Object> params);
 
     Goods selectById(Integer gid);
+
+    void insert(Goods goods);
 }

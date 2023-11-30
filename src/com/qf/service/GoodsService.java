@@ -15,4 +15,6 @@ public interface GoodsService {
     PageBean<Goods> findByPage(int page_num, int page_size, String where, List<Object> params);
 
     Goods findById(Integer gid);
+
+    void add(Goods goods);
 }

@@ -28,7 +28,7 @@
 		<div class="row">
 		  <div class="col-xs-6 col-md-6">
 		    <a href="#" class="thumbnail">
-		      <img src="${pageContext.request.contextPath}/goodsImgs/${goods.picture}"  width="560" height="560"  alt="${goods.name}" />
+		      <img src="${pageContext.request.contextPath}/goodsImgs?pic=${goods.picture}"  width="560" height="560"  alt="${goods.name}" />
 		    </a>
 		  </div>
 		  <div class="col-xs-6 col-md-6">
