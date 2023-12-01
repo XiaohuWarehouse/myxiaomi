@@ -67,40 +67,10 @@ public class GoodsDaoImpl implements GoodsDao {
     }
 
     @Override
-    public List<Goods> goodsselect(String name, String pubdate) {
-        String sql = " SELECT * FROM tb_goods WHERE name LIKE '%null%' AND pubdate = 'null' ";
-        try {
-            return queryRunner.query(sql, new BeanListHandler<>(Goods.class), name, pubdate);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
     public List<Goods> getAllGoods() {
         String sql = " SELECT * FROM tb_goods ";
         try {
             return queryRunner.query(sql, new BeanListHandler<>(Goods.class));
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public List<Goods> goodsselect(String name) {
-        String sql = " SELECT * FROM tb_goods WHERE name LIKE '%null%' ";
-        try {
-            return queryRunner.query(sql, new BeanListHandler<>(Goods.class), name);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @Override
-    public List<Goods> goodsselects(String pubdate) {
-        String sql = " SELECT * FROM tb_goods WHERE name pubdate = 'null' ";
-        try {
-            return queryRunner.query(sql, new BeanListHandler<>(Goods.class), pubdate);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

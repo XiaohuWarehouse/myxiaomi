@@ -20,11 +20,6 @@ public interface GoodsDao {
 
     void insert(Goods goods);
 
-    List<Goods> goodsselect(String name, String pubdate);
-
     List<Goods> getAllGoods();
 
-    List<Goods> goodsselect(String name);
-
-    List<Goods> goodsselects(String pubdate);
 }

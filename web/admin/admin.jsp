@@ -135,10 +135,10 @@
 					$(".dv_content").attr("src","userList.jsp");
 				})
 				$("#showGoodsType").click(function(){
-					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsTypeshow");
+					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodstypeservlet?method=getGoodsTypeshow");
 				})
 				$("#addGoodsType").click(function(){
-					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsTypeadd");
+					$(".dv_content").attr("src","${pageContext.request.contextPath }/goodstypeservlet?method=getGoodsTypeaddselect");
 				})
 				$("#showGoods").click(function(){
 					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsList");

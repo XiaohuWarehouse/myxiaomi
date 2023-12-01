@@ -20,5 +20,4 @@ public interface GoodsService {
     void add(Goods goods);
 
     List<Goods> getAllGoods();
-
 }

@@ -1,10 +1,13 @@
 package com.qf.web.controller;
 
 import com.qf.domain.Goods;
+import com.qf.domain.GoodsType;
 import com.qf.domain.PageBean;
 import com.qf.domain.User;
 import com.qf.service.GoodsService;
+import com.qf.service.GoodsTypeService;
 import com.qf.service.impl.GoodsServiceImpl;
+import com.qf.service.impl.GoodsTypeServiceImpl;
 import com.qf.utils.StringUtils;
 
 import javax.servlet.ServletException;
@@ -106,7 +109,6 @@ public class GoodsServlet extends BaseServlet {
     //添加后台商品
     public String addGoods(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        //判断是否登录
         //获取前端数据
         String name = request.getParameter("name");
         String typeid = request.getParameter("typeid");
@@ -190,31 +192,4 @@ public class GoodsServlet extends BaseServlet {
             throw new RuntimeException(e);
         }
     }
-
-    //后台添加商品种类
-    public String getGoodsTypeadd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return "redirect:/admin/addGoodsType.jsp";
-    }
-
-    //后台商品分类
-    public String getGoodsTypeshow(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 处理GET请求
-        String name = request.getParameter("name");
-        String pubdate = request.getParameter("pubdate");
-
-        // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
-        try {
-            GoodsService goodsService = new GoodsServiceImpl();
-
-            // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
-            List<Goods> goodsList;
-
-            // 将查询结果存储在request属性中
-//            request.setAttribute("goodsList", goodsList);
-            return "redirect:/admin/showGoodsType.jsp";
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
 }

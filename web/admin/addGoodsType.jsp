@@ -22,15 +22,15 @@
 			添加商品种类
 		</div>
 		<div class="panel-body">
-			<form action="${pageContext.request.contextPath }/addGoodsType" method="post">
+			<form action="${pageContext.request.contextPath }/goodstypeservlet?method=getGoodsTypeadd" method="post">
 				<div class="row">
 					<div class="form-group form-inline">
 						<span>所属种类</span>
 						<select name="goodsParent">
 							<option value="1">--请选择--</option>
-							<c:forEach items="${goodsTypeList }" var="type">
-								<c:if test="${type.level <=2}">
-									<option value="${type.id }">${type.name }</option>
+							<c:forEach items="${goodsTypeList }" var="gtype">
+								<c:if test="${gtype.level <=2}">
+									<option value="${gtype.id }">${gtype.name }</option>
 								</c:if>
 							</c:forEach>
 						</select>

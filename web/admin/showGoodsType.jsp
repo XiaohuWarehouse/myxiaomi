@@ -48,7 +48,7 @@
 						<td>${i.count}</td>
 						<td>${gtype.name}</td>
 						<td>${gtype.level}</td>
-						<td>${gtype.parentName}</td>
+						<td>${gtype.parent}</td>
 						<td>
 							<button>修改</button>&nbsp;&nbsp;
 							<button>删除</button>
