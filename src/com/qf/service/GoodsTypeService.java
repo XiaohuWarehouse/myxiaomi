@@ -14,4 +14,6 @@ public interface GoodsTypeService {
     List<GoodsType> findByLevel(int level);
 
     GoodsType findById(Integer typeId);
+
+    List<GoodsType> find();
 }

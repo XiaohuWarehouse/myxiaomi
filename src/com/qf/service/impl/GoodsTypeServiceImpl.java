@@ -24,4 +24,9 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
     public GoodsType findById(Integer typeId) {
         return goodsTypeDao.selectById(typeId);
     }
+
+    @Override
+    public List<GoodsType> find() {
+        return goodsTypeDao.adminselect();
+    }
 }

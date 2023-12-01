@@ -141,7 +141,7 @@
 					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsTypeadd");
 				})
 				$("#showGoods").click(function(){
-					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsList&id=${goods.id}");
+					$(".dv_content").attr("src","${pageContext.request.contextPath}/goodsservlet?method=getGoodsList");
 				})
 				$("#addGoods").click(function(){
 					$(".dv_content").attr("src","addGoods.jsp");

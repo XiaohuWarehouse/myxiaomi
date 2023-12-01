@@ -19,10 +19,6 @@ public interface GoodsService {
 
     void add(Goods goods);
 
-    List<Goods> goodsselect(String name, String pubdate);
-    List<Goods> goodsselect(String name);
-    List<Goods> goodsselects(String pubdate);
-
     List<Goods> getAllGoods();
 
 }

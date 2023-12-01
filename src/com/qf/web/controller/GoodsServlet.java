@@ -2,6 +2,7 @@ package com.qf.web.controller;
 
 import com.qf.domain.Goods;
 import com.qf.domain.PageBean;
+import com.qf.domain.User;
 import com.qf.service.GoodsService;
 import com.qf.service.impl.GoodsServiceImpl;
 import com.qf.utils.StringUtils;
@@ -179,31 +180,12 @@ public class GoodsServlet extends BaseServlet {
 
     //查看后台商品
     public String getGoodsList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 处理GET请求
-        String name = request.getParameter("name");
-        String pubdate = request.getParameter("pubdate");
-
-        // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
         try {
             GoodsService goodsService = new GoodsServiceImpl();
-
-            // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
-            List<Goods> goodsList;
-
-            if (name != null && pubdate != null) {
-                goodsList = goodsService.goodsselect(name,pubdate);
-            } else if (name != null) {
-                goodsList = goodsService.goodsselect(name);
-            } else if (pubdate != null) {
-                goodsList = goodsService.goodsselects(pubdate);
-            } else {
-                // 处理没有提供任何参数的情况，查询所有商品列表
-                goodsList = goodsService.getAllGoods();
-            }
-
+            List<Goods> goodsList = goodsService.getAllGoods();
             // 将查询结果存储在request属性中
             request.setAttribute("goodsList", goodsList);
-            return "/admin/showGoods.jsp";
+            return "admin/showGoods.jsp";
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -227,19 +209,8 @@ public class GoodsServlet extends BaseServlet {
             // 在这里执行搜索逻辑，根据name和pubdate查询商品列表
             List<Goods> goodsList;
 
-            if (name != null && pubdate != null) {
-                goodsList = goodsService.goodsselect(name,pubdate);
-            } else if (name != null) {
-                goodsList = goodsService.goodsselect(name);
-            } else if (pubdate != null) {
-                goodsList = goodsService.goodsselects(pubdate);
-            } else {
-                // 处理没有提供任何参数的情况，查询所有商品列表
-                goodsList = goodsService.getAllGoods();
-            }
-
             // 将查询结果存储在request属性中
-            request.setAttribute("goodsList", goodsList);
+//            request.setAttribute("goodsList", goodsList);
             return "redirect:/admin/showGoodsType.jsp";
         } catch (Exception e) {
             throw new RuntimeException(e);

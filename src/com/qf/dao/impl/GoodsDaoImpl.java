@@ -2,12 +2,14 @@ package com.qf.dao.impl;
 
 import com.qf.dao.GoodsDao;
 import com.qf.domain.Goods;
+import com.qf.domain.Order;
 import com.qf.utils.DataSourceUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.List;
