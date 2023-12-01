@@ -2,6 +2,8 @@ package com.qf.service;
 
 import com.qf.domain.User;
 
+import java.util.List;
+
 /**
  * projectName:myxiaomi
  * author:HuShanTao
@@ -18,4 +20,6 @@ public interface UserService {
     User login(String username, String password);
 
     User adminLogin(String username, String password);
+
+    List<User> adminfind(Integer id);
 }

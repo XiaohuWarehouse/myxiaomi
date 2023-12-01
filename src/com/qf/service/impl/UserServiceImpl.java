@@ -7,6 +7,8 @@ import com.qf.service.UserService;
 import com.qf.utils.EmailUtils;
 import com.qf.utils.MD5Utils;
 
+import java.util.List;
+
 /**
  * projectName:myxiaomi
  * author:HuShanTao
@@ -83,5 +85,10 @@ public class UserServiceImpl implements UserService {
             throw new RuntimeException("账户非管理员");
         }
         return user;
+    }
+
+    @Override
+    public List<User> adminfind(Integer id) {
+        return userDao.adminselect(id);
     }
 }

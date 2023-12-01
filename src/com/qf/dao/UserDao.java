@@ -2,6 +2,8 @@ package com.qf.dao;
 
 import com.qf.domain.User;
 
+import java.util.List;
+
 /**
  * projectName:myxiaomi
  * author:HuShanTao
@@ -14,4 +16,6 @@ public interface UserDao {
     void insert(User user);
 
     int updateFlag(String email, String code);
+
+    List<User> adminselect(Integer id);
 }

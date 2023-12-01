@@ -20,6 +20,8 @@ public class Order {
     //订单与地址关联
     private Address address;
 
+    private User user;
+
     public Order() {
     }
 
@@ -40,6 +42,17 @@ public class Order {
         this.time = time;
         this.aid = aid;
         this.address = address;
+    }
+
+    public Order(String id, Integer uid, BigDecimal money, String status, Date time, Integer aid, Address address, User user) {
+        this.id = id;
+        this.uid = uid;
+        this.money = money;
+        this.status = status;
+        this.time = time;
+        this.aid = aid;
+        this.address = address;
+        this.user = user;
     }
 
     /**
@@ -154,7 +167,23 @@ public class Order {
         this.address = address;
     }
 
+    /**
+     * 获取
+     * @return user
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
+     * 设置
+     * @param user
+     */
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public String toString() {
-        return "Order{id = " + id + ", uid = " + uid + ", money = " + money + ", status = " + status + ", time = " + time + ", aid = " + aid + ", address = " + address + "}";
+        return "Order{id = " + id + ", uid = " + uid + ", money = " + money + ", status = " + status + ", time = " + time + ", aid = " + aid + ", address = " + address + ", user = " + user + "}";
     }
 }

@@ -20,4 +20,6 @@ public interface OrderService {
     Order findByOid(String oid);
 
     List<OrderDetail> findDetail(String oid);
+
+    List<Order> adminfind(Integer id);
 }

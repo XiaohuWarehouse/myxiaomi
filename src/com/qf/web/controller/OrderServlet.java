@@ -129,13 +129,28 @@ public class OrderServlet extends BaseServlet {
             return "/orderDetail.jsp";
         } catch (Exception e) {
             e.printStackTrace();
-            request.setAttribute("msg", "查看订单详情失败" + e.getMessage());
+            request.setAttribute("msg", "查看订单详情失败:" + e.getMessage());
             return "/message.jsp";
         }
     }
 
     //后台查看订单列表
     public String getAllOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        return "redirect:/admin/showAllOrder.jsp";
+        //判断用户是否登录
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            return "redirect:/admin/login.jsp";
+        }
+        //调用业务逻辑
+        try {
+            OrderService orderService = new OrderServiceImpl();
+            List<Order> orderList = orderService.adminfind(user.getId());
+            request.setAttribute("orderList", orderList);
+            return "admin/showAllOrder.jsp";
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "查询订单失败：" + e.getMessage());
+            return "/message.jsp";
+        }
     }
 }

@@ -1,18 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+		 pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="css/bootstrap.min.css" />
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/DatePicker.js"></script>
-<title>商品列表</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/DatePicker.js"></script>
+	<title>商品列表</title>
 
 </head>
 <body>
@@ -54,10 +54,10 @@
 								<td>${goods.goodsType.name}</td>
 								<td>删除 &nbsp;修改 &nbsp;
 									<a tabindex="0" id="example${goods.id}" class="btn btn-primary btn-xs"
-									role="button" data-toggle="popover"
-									data-trigger="focus"
-									data-placement="left"
-									data-content="${goods.intro}">描述</a>
+									   role="button" data-toggle="popover"
+									   data-trigger="focus"
+									   data-placement="left"
+									   data-content="${goods.intro}">描述</a>
 									<script type="text/javascript">
 										$(function(){
 											$("#example${goods.id}").popover();
@@ -69,7 +69,7 @@
 					</table>
 				</div>
 			</div>
-			
+
 		</div>
 	</div>
 </div>

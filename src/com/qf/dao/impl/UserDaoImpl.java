@@ -1,12 +1,15 @@
 package com.qf.dao.impl;
 
 import com.qf.dao.UserDao;
+import com.qf.domain.Address;
 import com.qf.domain.User;
 import com.qf.utils.DataSourceUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
+import org.apache.commons.dbutils.handlers.BeanListHandler;
 
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * projectName:myxiaomi
@@ -42,6 +45,16 @@ public class UserDaoImpl implements UserDao {
         String sql=" update tb_user set flag=1 where email=? and code=? and flag=0 ";
         try {
             return queryRunner.update(sql,email,code);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public List<User> adminselect(Integer id) {
+        String sql = " SELECT * FROM `tb_user` WHERE `id`=? ";
+        try {
+            return queryRunner.query(sql,new BeanListHandler<>(User.class),id);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

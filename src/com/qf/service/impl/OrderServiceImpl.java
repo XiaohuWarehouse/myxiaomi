@@ -3,10 +3,7 @@ package com.qf.service.impl;
 import com.qf.dao.OrderDao;
 import com.qf.dao.impl.OrderDaoImpl;
 import com.qf.domain.*;
-import com.qf.service.AddressService;
-import com.qf.service.CartService;
-import com.qf.service.GoodsService;
-import com.qf.service.OrderService;
+import com.qf.service.*;
 import com.qf.utils.DataSourceUtil;
 
 import javax.xml.crypto.Data;
@@ -100,5 +97,25 @@ public class OrderServiceImpl implements OrderService {
             }
         }
         return orderDetails;
+    }
+
+    @Override
+    public List<Order> adminfind(Integer id) {
+        List<Order> orderList = orderDao.select(id);
+        if (orderList != null && orderList.size() > 0) {
+            UserService userService = new UserServiceImpl();
+            List<User> userList = userService.adminfind(id);
+            System.out.println(userList);
+            if (userList != null) {
+                for (Order order : orderList) {
+                    for (User user : userList) {
+                        if (order.getAid() == user.getId()) {
+                            order.setUser(user);
+                        }
+                    }
+                }
+            }
+        }
+        return orderList;
     }
 }

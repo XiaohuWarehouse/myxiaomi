@@ -57,7 +57,6 @@ public class GoodsServiceImpl implements GoodsService {
                 List<GoodsType> goodsTypeList = goodsTypeService.find();
                 if (goodsTypeList != null) {
                     for (GoodsType goodsType : goodsTypeList) {
-
                         if (goods.getTypeid() == goodsType.getId()) {
                             goods.setGoodsType(goodsType);
                         }
