@@ -59,4 +59,14 @@ public class UserDaoImpl implements UserDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<User> adminselect() {
+        String sql = " SELECT * FROM `tb_user` ";
+        try {
+            return queryRunner.query(sql,new BeanListHandler<>(User.class));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

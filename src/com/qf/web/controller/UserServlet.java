@@ -1,11 +1,16 @@
 package com.qf.web.controller;
 
 import cn.dsna.util.images.ValidateCode;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.qf.domain.Address;
+import com.qf.domain.Order;
 import com.qf.domain.User;
 import com.qf.service.AddressService;
+import com.qf.service.OrderService;
 import com.qf.service.UserService;
 import com.qf.service.impl.AddressServiceImpl;
+import com.qf.service.impl.OrderServiceImpl;
 import com.qf.service.impl.UserServiceImpl;
 import com.qf.utils.Base64Utils;
 import com.qf.utils.RandomUtils;
@@ -359,5 +364,22 @@ public class UserServlet extends BaseServlet {
         session.invalidate();
         //4转发重定向
         return "redirect:/admin/login.jsp";
+    }
+
+    //后台查询用户
+    public void getUserList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        //调用业务逻辑
+        try {
+            UserService userService = new UserServiceImpl();
+            List<User> userList = userService.adminselect();
+            System.out.println(userList);
+
+            String data = JSON.toJSONString(userList);
+            response.getWriter().write(data);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

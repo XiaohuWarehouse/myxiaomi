@@ -145,6 +145,7 @@ public class OrderServlet extends BaseServlet {
         try {
             OrderService orderService = new OrderServiceImpl();
             List<Order> orderList = orderService.adminfind(user.getId());
+            System.out.println(orderList);
             request.setAttribute("orderList", orderList);
             return "admin/showAllOrder.jsp";
         } catch (Exception e) {

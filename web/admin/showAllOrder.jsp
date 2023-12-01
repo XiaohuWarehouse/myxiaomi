@@ -87,7 +87,7 @@
 							</c:if>
 						</td>
 						<td>${order.time}</td>
-						<td>${order.user.name}</td>
+						<td>${user.username}</td>
 						<td>
 							<c:if test="${order.status eq 2}">
 								<button type="button" class="btn btn-danger btn-sm" onclick="sendOrder('${order.id}')">发货</button>

@@ -22,4 +22,6 @@ public interface UserService {
     User adminLogin(String username, String password);
 
     List<User> adminfind(Integer id);
+
+    List<User> adminselect();
 }

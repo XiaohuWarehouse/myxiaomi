@@ -18,4 +18,6 @@ public interface UserDao {
     int updateFlag(String email, String code);
 
     List<User> adminselect(Integer id);
+
+    List<User> adminselect();
 }
