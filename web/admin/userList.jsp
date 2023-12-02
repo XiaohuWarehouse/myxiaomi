@@ -62,7 +62,7 @@
         function delUser(id) {
             if (confirm("确认要删除吗?")) {
                 $.ajax({
-                    url: "${pageContext.request.contextPath}/deleteUser?id=" + id,
+                    url: "${pageContext.request.contextPath}//userservlet?method=deleteUser&id=" + id,
                     method: "get",
                     success: function (data) {
                         loadUser();

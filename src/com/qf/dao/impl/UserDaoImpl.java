@@ -69,4 +69,16 @@ public class UserDaoImpl implements UserDao {
             throw new RuntimeException(e);
         }
     }
+
+    @Override
+    public List<User> adminDeleteuser(String id) {
+//        DELETE FROM 表名 WHERE 条件;
+        String sql = " DELETE FROM `tb_user` WHERE id=? ";
+        try {
+            queryRunner.update(sql, id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return null;
+    }
 }

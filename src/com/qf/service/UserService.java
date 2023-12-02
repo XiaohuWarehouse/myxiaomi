@@ -26,4 +26,6 @@ public interface UserService {
     List<User> adminselect();
 
     User selectUserName(String username);
+
+    List<User> adminDelete(String id);
 }

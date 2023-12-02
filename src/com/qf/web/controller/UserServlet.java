@@ -384,4 +384,21 @@ public class UserServlet extends BaseServlet {
             e.printStackTrace();
         }
     }
+
+    //后台删除用户
+    public void deleteUser(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setCharacterEncoding("UTF-8");
+        String id = request.getParameter("id");
+        //调用业务逻辑
+        try {
+            UserService userService = new UserServiceImpl();
+            List<User> userList = userService.adminDelete(id);
+
+            String data = JSON.toJSONString(userList);
+            response.getWriter().write(data);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

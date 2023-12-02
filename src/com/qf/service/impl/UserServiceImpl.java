@@ -101,4 +101,9 @@ public class UserServiceImpl implements UserService {
     public User selectUserName(String username) {
         return userDao.selectByUserName(username);
     }
+
+    @Override
+    public List<User> adminDelete(String id) {
+        return userDao.adminDeleteuser(id);
+    }
 }

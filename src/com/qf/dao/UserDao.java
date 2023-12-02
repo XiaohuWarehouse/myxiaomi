@@ -20,4 +20,6 @@ public interface UserDao {
     List<User> adminselect(Integer id);
 
     List<User> adminselect();
+
+    List<User> adminDeleteuser(String id);
 }
