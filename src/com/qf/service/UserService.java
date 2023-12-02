@@ -24,4 +24,6 @@ public interface UserService {
     List<User> adminfind(Integer id);
 
     List<User> adminselect();
+
+    User selectUserName(String username);
 }

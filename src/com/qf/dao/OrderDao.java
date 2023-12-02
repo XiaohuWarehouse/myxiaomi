@@ -21,4 +21,6 @@ public interface OrderDao {
     Order selectByOid(String oid);
 
     List<OrderDetail> selectDetail(String oid);
+
+    List<Order> selectByPage(String string, List<Object> params);
 }

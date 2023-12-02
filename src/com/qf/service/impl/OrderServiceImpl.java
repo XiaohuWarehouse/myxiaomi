@@ -5,6 +5,7 @@ import com.qf.dao.impl.OrderDaoImpl;
 import com.qf.domain.*;
 import com.qf.service.*;
 import com.qf.utils.DataSourceUtil;
+import com.sun.org.apache.xpath.internal.operations.Or;
 
 import javax.xml.crypto.Data;
 import java.sql.SQLException;
@@ -118,4 +119,11 @@ public class OrderServiceImpl implements OrderService {
         }
         return orderList;
     }
+
+    @Override
+    public List<Order> adminorderselect(String string, List<Object> params) {
+        List<Order> data = orderDao.selectByPage(string, params);
+        return data;
+    }
+
 }

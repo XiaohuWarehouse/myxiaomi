@@ -96,4 +96,9 @@ public class UserServiceImpl implements UserService {
     public List<User> adminselect() {
         return userDao.adminselect();
     }
+
+    @Override
+    public User selectUserName(String username) {
+        return userDao.selectByUserName(username);
+    }
 }

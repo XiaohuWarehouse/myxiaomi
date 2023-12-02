@@ -369,6 +369,8 @@ public class UserServlet extends BaseServlet {
     //后台查询用户
     public void getUserList(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setCharacterEncoding("UTF-8");
+        String username = request.getParameter("username");
+        String gender = request.getParameter("gender");
         //调用业务逻辑
         try {
             UserService userService = new UserServiceImpl();

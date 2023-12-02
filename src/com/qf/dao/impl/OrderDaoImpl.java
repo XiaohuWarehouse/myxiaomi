@@ -1,12 +1,15 @@
 package com.qf.dao.impl;
 
 import com.qf.dao.OrderDao;
+import com.qf.domain.Goods;
 import com.qf.domain.Order;
 import com.qf.domain.OrderDetail;
+import com.qf.domain.User;
 import com.qf.utils.DataSourceUtil;
 import org.apache.commons.dbutils.QueryRunner;
 import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -85,6 +88,17 @@ public class OrderDaoImpl implements OrderDao {
             throw new RuntimeException(e);
         } finally {
             DataSourceUtil.closeAll(null, null, connection);
+        }
+    }
+
+    @Override
+    public List<Order> selectByPage(String string, List<Object> params) {
+        String sql = "SELECT * FROM `tb_order` " + string;
+        try {
+            Connection connection = DataSourceUtil.getConnection();
+            return queryRunner.query(connection, sql, new BeanListHandler<>(Order.class), params.toArray());
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }

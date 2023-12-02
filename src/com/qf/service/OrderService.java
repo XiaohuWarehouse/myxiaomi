@@ -22,4 +22,6 @@ public interface OrderService {
     List<OrderDetail> findDetail(String oid);
 
     List<Order> adminfind(Integer id);
+
+    List<Order> adminorderselect(String string, List<Object> params);
 }

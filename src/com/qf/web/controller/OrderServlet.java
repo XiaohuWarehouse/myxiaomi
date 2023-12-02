@@ -4,9 +4,11 @@ import com.qf.domain.*;
 import com.qf.service.AddressService;
 import com.qf.service.CartService;
 import com.qf.service.OrderService;
+import com.qf.service.UserService;
 import com.qf.service.impl.AddressServiceImpl;
 import com.qf.service.impl.CartServiceImpl;
 import com.qf.service.impl.OrderServiceImpl;
+import com.qf.service.impl.UserServiceImpl;
 import com.qf.utils.RandomUtils;
 import com.qf.utils.StringUtils;
 import com.sun.org.apache.xpath.internal.operations.Or;
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -145,6 +148,46 @@ public class OrderServlet extends BaseServlet {
         try {
             OrderService orderService = new OrderServiceImpl();
             List<Order> orderList = orderService.adminfind(user.getId());
+            System.out.println(orderList);
+            request.setAttribute("orderList", orderList);
+            return "admin/showAllOrder.jsp";
+        } catch (Exception e) {
+            e.printStackTrace();
+            request.setAttribute("msg", "查询订单失败：" + e.getMessage());
+            return "/message.jsp";
+        }
+    }
+
+    //后台模糊查看订单列表
+    public String searchOrder(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        //判断用户是否登录
+        User user = (User) request.getSession().getAttribute("user");
+        if (user == null) {
+            return "redirect:/admin/login.jsp";
+        }
+        String username = request.getParameter("username");
+        String status = request.getParameter("status");
+
+        UserService userService = new UserServiceImpl();
+        User userid = userService.selectUserName(username);
+
+
+        StringBuilder where = new StringBuilder(" where 1=1 ");
+        List<Object> params = new ArrayList<Object>();
+        if (!StringUtils.isEmpty(username)) {
+            where.append(" and uid = ? ");
+            params.add(userid.getId());
+        }
+        if (!StringUtils.isEmpty(status)) {
+            where.append(" and status = ? ");
+            params.add(status);
+        }
+
+        //调用业务逻辑
+        try {
+            OrderService orderService = new OrderServiceImpl();
+            List<Order> orderList = orderService.adminorderselect(where.toString(), params);
             System.out.println(orderList);
             request.setAttribute("orderList", orderList);
             return "admin/showAllOrder.jsp";
