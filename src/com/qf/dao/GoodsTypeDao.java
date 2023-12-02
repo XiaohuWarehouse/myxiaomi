@@ -16,4 +16,6 @@ public interface GoodsTypeDao {
     GoodsType selectById(Integer typeId);
 
     List<GoodsType> adminselect();
+
+    void adminadd(GoodsType goodsType);
 }

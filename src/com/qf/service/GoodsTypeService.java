@@ -16,4 +16,6 @@ public interface GoodsTypeService {
     GoodsType findById(Integer typeId);
 
     List<GoodsType> find();
+
+    void add(GoodsType goodsType);
 }

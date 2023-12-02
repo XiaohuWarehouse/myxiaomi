@@ -30,7 +30,7 @@
 							<option value="1">--请选择--</option>
 							<c:forEach items="${goodsTypeList }" var="gtype">
 								<c:if test="${gtype.level <=2}">
-									<option value="${gtype.id }">${gtype.name }</option>
+									<option value="${gtype.id }">${gtype.parent }</option>
 								</c:if>
 							</c:forEach>
 						</select>

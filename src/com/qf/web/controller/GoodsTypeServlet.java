@@ -73,23 +73,27 @@ public class GoodsTypeServlet extends BaseServlet {
     //后台添加商品种类
     public String getGoodsTypeadd(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String typename = request.getParameter("typename");
         String goodsParent = request.getParameter("goodsParent");
-        System.out.println(goodsParent);
-        //非空验证
+        int goodsParents = Integer.parseInt(request.getParameter("goodsParent"));
+        System.out.println(goodsParents);
+        String typename = request.getParameter("typename");
+
+        // Non-empty validation
         if (StringUtils.isEmpty(typename)) {
             request.setAttribute("msg", "种类名称不能为空");
             return "/admin/addGoodsType.jsp";
         }
+
         try {
             GoodsTypeService goodsTypeService = new GoodsTypeServiceImpl();
-//            GoodsType goodsType = new GoodsType(0,goodsParent.getClass());
-//            goodsTypeService.add(goodsType);
+            GoodsType goodsType = new GoodsType(0, typename, 1, goodsParents);
+            goodsTypeService.add(goodsType);
             response.getWriter().write("<script>alert('添加成功');window.location='admin/addGoodsType.jsp'</script>");
         } catch (Exception e) {
             e.printStackTrace();
             response.getWriter().write("<script>alert('添加失败');window.location='admin/addGoodsType.jsp'</script>");
         }
+
         return null;
     }
 

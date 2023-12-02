@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class GoodsTypeDaoImpl implements GoodsTypeDao {
     private QueryRunner queryRunner = new QueryRunner(DataSourceUtil.getDataSource());
+
     @Override
     public List<GoodsType> select(int level) {
         try {
@@ -32,7 +33,7 @@ public class GoodsTypeDaoImpl implements GoodsTypeDao {
     public GoodsType selectById(Integer typeId) {
         String sql = " SELECT `id`,`name`,`level`,`parent` FROM `tb_goods_type` WHERE id=? ";
         try {
-            return queryRunner.query(sql,new BeanHandler<>(GoodsType.class),typeId);
+            return queryRunner.query(sql, new BeanHandler<>(GoodsType.class), typeId);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
@@ -43,6 +44,17 @@ public class GoodsTypeDaoImpl implements GoodsTypeDao {
         try {
             String sql = " SELECT `id`,`name`,`level`,`parent` FROM `tb_goods_type` ";
             return queryRunner.query(sql, new BeanListHandler<>(GoodsType.class));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void adminadd(GoodsType goodsType) {
+        String sql = " INSERT INTO `tb_goods_type` (`name`,`level`,`parent`) VALUES (?,?,?) ";
+        Object[] params = {goodsType.getName(), goodsType.getLevel(), goodsType.getParent()};
+        try {
+            queryRunner.update(sql, params);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }

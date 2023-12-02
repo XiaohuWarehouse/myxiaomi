@@ -29,4 +29,9 @@ public class GoodsTypeServiceImpl implements GoodsTypeService {
     public List<GoodsType> find() {
         return goodsTypeDao.adminselect();
     }
+
+    @Override
+    public void add(GoodsType goodsType) {
+        goodsTypeDao.adminadd(goodsType);
+    }
 }
